@@ -1,0 +1,42 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🛠 Build project
+        run: npm run build
+
+      - name: 🕒 Generate deploy timestamp
+        run: |
+          mkdir -p dist
+          echo '{ "schemaVersion": 1, "label": "last deploy", "message": "'$(TZ=Asia/Bangkok date "+%Y-%m-%d %H:%M")'", "color": "blue" }' > dist/deploy-meta.json
+
+      - name: 🚀 Deploy to GitHub Pages (gh-pages branch)
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist

@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -99,5 +100,33 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		function({ addUtilities }) {
+			const newUtilities = {
+				'.scrollbar-thin': {
+					'scrollbarWidth': 'thin',
+					'&::-webkit-scrollbar': {
+						width: '6px',
+						height: '6px',
+					},
+				},
+				'.scrollbar-thumb-magic-secondary/20': {
+					'&::-webkit-scrollbar-thumb': {
+						backgroundColor: 'rgba(126, 105, 171, 0.2)',
+						borderRadius: '3px',
+					},
+					'&::-webkit-scrollbar-thumb:hover': {
+						backgroundColor: 'rgba(126, 105, 171, 0.4)',
+					},
+				},
+				'.scrollbar-track-transparent': {
+					'&::-webkit-scrollbar-track': {
+						backgroundColor: 'transparent',
+					},
+				},
+			};
+			addUtilities(newUtilities, ['responsive', 'hover']);
+		},
+	],
 } satisfies Config;

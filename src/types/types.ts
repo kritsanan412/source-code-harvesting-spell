@@ -1,8 +1,11 @@
 
+// Define the CodeSpell type
 export interface CodeSpell {
   id: string;
   title: string;
   code: string;
   language: string;
-  timestamp: number;
+  createdAt: Date | string;
+  tags?: string[];
+  description?: string;
 }

@@ -1,8 +1,7 @@
-
 import React, { useEffect, useState } from 'react';
 import { Command, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem } from "@/components/ui/command";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { Book, Code, FileCode, Magic, Plus, Settings, Sparkles, Trash2 } from "lucide-react";
+import { Book, Code, FileCode, Sparkles, Plus, Settings, Trash2, Wand2 } from "lucide-react";
 import { CodeSpell } from "@/types/types"; // We'll create this type file
 
 interface CommandPaletteProps {
@@ -72,7 +71,7 @@ const CommandPalette = ({ isOpen, setIsOpen, spells, onDeleteSpell, onHarvestCod
                 }}
                 className="flex items-center gap-2 py-3 cursor-pointer hover:bg-magic-primary/10"
               >
-                <Magic className="h-5 w-5 text-magic-primary" />
+                <Wand2 className="h-5 w-5 text-magic-primary" />
                 <span>บันทึกโค้ดใหม่</span>
               </CommandItem>
               

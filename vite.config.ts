@@ -4,7 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 // ✅ ตั้งค่า base เป็นชื่อ repo (ใช้สำหรับ GitHub Pages)
-const repoName = "wang-tour-web"; // เปลี่ยนชื่อ repo ของคุณตรงนี้
+const repoName = "source-code-harvesting-spell"; // เปลี่ยนชื่อ repo ของคุณตรงนี้
 
 export default defineConfig(({ mode }) => ({
   base: `/${repoName}/`, // 👈 สำคัญสำหรับ GitHub Pages
